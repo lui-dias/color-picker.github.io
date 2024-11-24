@@ -22,16 +22,14 @@ export function App() {
         throw new Error(`Invalid format: ${format.value}`)
     })
 
-    const color = useComputed(() => {
-        console.log({ h: hue.value, s: saturation.value, v: value.value, a: opacity.value })
-
-        return tinycolor.fromRatio({
+    const color = useComputed(() =>
+        tinycolor.fromRatio({
             h: hue.value,
             s: saturation.value,
             v: value.value,
             a: opacity.value,
-        })
-    })
+        }),
+    )
 
     const currentColorIsDark = useComputed(() => color.value.isDark())
 
